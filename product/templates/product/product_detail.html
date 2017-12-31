@@ -1,0 +1,80 @@
+{% extends 'product/base.html' %}
+{% block title %}
+    Pikom | Products
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class="close">x</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Product detail</div>
+                <div class="panel-body prod-info-main prod-wrap clearfix">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="product-image" id="slider">
+                                <figure>
+                                    {% for image in product.productimage_set.all %}
+                                        {% if image.active %}
+                                            <img src="{{ image.image.url }}" class="img-responsive">
+                                        {% endif %}
+                                    {% endfor %}
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="column">
+                                <div class="col-lg-12">
+                                    <div class="product-deatil">
+                                        <h5 class="name">
+                                            {{ product.title }}
+                                            <hr>
+                                        </h5>
+                                        <p class="price-container">
+                                            <span style="color: crimson"><s>৳{{ product.price }}</s></span> /
+                                            <span>৳{{ product.sale_price }}</span>
+                                        </p>
+                                    </div>
+                                    <div class="description">
+                                        <p>{{ product.description }}</p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="product-info smart-form">
+                                            <form action="{% url 'update-cart' product.slug %}" method="get"
+                                                  class="form-group">
+                                                <label for="qty"
+                                                       style="font-weight: normal;">Quantity</label>
+                                                <input type="number" value="1" name="qty" style="width: 30px;"
+                                                       id="qty" class="form-horizontal">
+                                                <input type="submit" class="btn btn-primary" value="Add to cart">
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="rating">Rating:
+                                            <label for="stars-rating-5"><i class="fa fa-star text-danger"></i></label>
+                                            <label for="stars-rating-4"><i class="fa fa-star text-danger"></i></label>
+                                            <label for="stars-rating-3"><i class="fa fa-star text-danger"></i></label>
+                                            <label for="stars-rating-2"><i class="fa fa-star text-warning"></i></label>
+                                            <label for="stars-rating-1"><i class="fa fa-star text-warning"></i></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

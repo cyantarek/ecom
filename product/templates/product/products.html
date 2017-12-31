@@ -1,0 +1,43 @@
+{% extends 'product/base.html' %}
+{% block title %}
+    Pikom | Products
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class="close">x</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col-xs col-md">
+            <div class="panel panel-default">
+                <div class="panel-heading">Products</div>
+                <div class="panel-body">
+                    <div class="row">
+                        {% for product in products %}
+                            <div class="col-lg-4">
+
+                                <div class="thumbnail">
+                                    <img class="img-responsive" src="{{ product.image }}">
+                                    <div class="caption">
+                                        <h3 class="caption-label">{{ product.title|capfirst }}</h3>
+                                        <p>{{ product.description }}</p>
+                                        <p class="text-danger ansi-bold">{{ product.price }} BDT</p>
+                                        <p>
+                                            <a class="btn btn-primary" href="#">Add to Cart</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+{% endblock %}

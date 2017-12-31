@@ -1,0 +1,66 @@
+{% extends 'product/base.html' %}
+{% load static %}
+{% block title %}
+    Pikom | Products
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                {% if not cart.item_set.all %}
+                    <div class="panel-heading">Your cart is empty. Please make some shopping</div>
+                {% else %}
+                    <div class="panel-heading">Your cart</div>
+                {% endif %}
+                <div class="panel-body">
+                    {% if cart.item_set.all %}
+                        <table class="table table-striped table-bordered table-condensed" id="cart_table">
+                            <thead>
+                                <tr>
+                                    <th align="center">Sl.</th>
+                                    <th align="center">Preview</th>
+                                    <th align="center">Item name</th>
+                                    <th align="center">Price</th>
+                                    <th align="center">Quantity</th>
+                                    <th align="center">Item Price</th>
+                                    <th align="center">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart.item_set.all %}
+                                    <td>{{ forloop.counter }}</td>
+                                    <td> {% for image in item.product.productimage_set.all %}
+                                        {% if image.thumbnail %}
+                                            <img src="{{ image.image.url }}" height="30">
+                                        {% endif %}
+                                    {% endfor %}</td>
+                                    <td>{{ item.product.title }}</td>
+                                    <td>{{ item.product.sale_price }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>{{ item.item_total }}</td>
+                                    <td colspan="1">
+                                        <a href="{% url 'update-cart' item.product.slug %}?qty=0"><i
+                                                class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+
+                                <tr class="tr">
+                                    <td colspan="3"><a href="{% url 'home' %}" class="btn btn-success">Continue
+                                                                                                       shopping</a></td>
+                                    <td colspan="2"></td>
+                                    <td>
+                                        <p style="font-weight: bold">Total: {{ cart.cart_total }}</p>
+                                    </td>
+                                    <td><a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'calc.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,36 @@
+{% extends 'product/base.html' %}
+{% block title %}
+    Pikom | Home
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class="close">x</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Headings</div>
+                <div class="panel-body">
+                    <h1 class="page-header">Page Header
+                        <small>With Small Text</small>
+                    </h1>
+
+                    <h1>This is an h1 heading</h1>
+                    <h2>This is an h2 heading</h2>
+                    <h3>This is an h3 heading</h3>
+                    <h4>This is an h4 heading</h4>
+                    <h5>This is an h5 heading</h5>
+                    <h6>This is an h6 heading</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
