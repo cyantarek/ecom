@@ -3,18 +3,6 @@ from django.shortcuts import render
 from .models import Product
 
 
-# Create your views here.
-
-def index(request):
-	template = "product/products2.html"
-	products = Product.objects.filter(active=True)
-	context = {
-		"section": "products",
-		"products": products,
-	}
-	return render(request, template, context)
-
-
 def product_detail(request, slug):
 	template = "product/product_detail.html"
 	try:

@@ -6,7 +6,6 @@ from . import views
 urlpatterns = [
 	path("s/", views.product_search, name="search"),
 	path("<slug>/", views.product_detail, name="detail"),
-	path("", views.index, name="home"),
 ]
 
 if settings.DEBUG:

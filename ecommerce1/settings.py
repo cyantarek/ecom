@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 	'product',
 	'cart',
 	'order',
+
+	'mathfilters',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'ecommerce1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': []
 		,
         'APP_DIRS': True,
         'OPTIONS': {

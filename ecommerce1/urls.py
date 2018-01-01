@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 from ecommerce1 import settings
-from product import views
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include("product.urls")),
-    path('', views.index),
+    path('', views.index, name='home'),
+    path('contact/', views.contact, name='contact'),
     path('cart/', include("cart.urls")),
     path('order/', include("order.urls")),
 ]

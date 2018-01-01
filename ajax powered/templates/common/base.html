@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+    {% include 'modules/header.html' %}
+
+
+    <body>
+
+        {% include 'modules/top_header.html' %}
+
+        {% include 'modules/logo_cart.html' %}
+
+        {% include 'modules/navbar.html' %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% include 'modules/footer.html' %}
+
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+
+    </body>
+</html>
