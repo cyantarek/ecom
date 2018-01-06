@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        {% if status == "activated" %}
+            Account activated
+        {% elif status == "already_activated" %}
+            Account already activated
+        {% elif status == "expired" %}
+            Link expired
+        {% endif %}
+    </body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Signup</div>
+                <div class="panel-body clearfix">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <form class="form-group column" action="." method="post">
+                            {% csrf_token %}
+                            Username: <input type="text" name="username"><br>
+                            Email: <input type="text" name="email"><br>
+                            Password: <input type="password" name="password"><br>
+                            Confirm Password: <input type="password" name="password2">
+                            <input type="submit" value="Signup">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

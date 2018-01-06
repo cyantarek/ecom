@@ -4,15 +4,6 @@
 {% endblock %}
 
 {% block content %}
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li class="{{ message.tags }}">
-                    {{ message|safe }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
     {% for product in products %}
         <div class="col-xs-12 col-md-6">
             <div class="prod-info-main prod-wrap clearfix">

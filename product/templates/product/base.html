@@ -17,6 +17,7 @@
     </head>
 
     <body>
+        {% include 'modules/messages.html' %}
         {% include 'modules/navbar.html' %}
 
         <div class="container">
@@ -24,8 +25,6 @@
 
             {% endblock %}
         </div>
-
-
         <script src="{% static 'jquery.js' %}"></script>
         <script src="{% static 'bootstrap.js' %}"></script>
     </body>
